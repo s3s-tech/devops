@@ -1,5 +1,9 @@
 Sachendra Karmacharya
 
 my zip code used to be 56560
+<<<<<<< HEAD
 
 my phone number is 1234567890
+=======
+My favorite soccer club is Manchester Utd. Glory Glory Man Utd
+>>>>>>> b932fc39edbec73f86803731a4926d1fb13fdebb
