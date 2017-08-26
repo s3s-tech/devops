@@ -1,0 +1,23 @@
+node ('master')
+{
+    if (SetEnv in ('BUILD'))
+    {
+        stage('scm_checkout')
+checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/s3s-tech/devops']]])
+ stage('scm_build')
+ bat 'C:\\Users\\viinod\\Desktop\\apache-maven-3.5.0\\bin\\mvn -f sample-java\\pom.xml clean install'
+ 
+    //def MAVEN_HOME= tool 'MAVEN'
+    bat 'C:\\Users\\viinod\\Desktop\\apache-maven-3.5.0\\bin\\mvn -f sample-java\\pom.xml clean install'
+    archiveArtifacts '**\\target\\*.war'
+
+
+}
+if (SetEnv in ('DEV'))
+{
+echo "deploying to dev env"
+}
+}
+
+//C:\Program Files(x86)\Jenkins\workspace\pipeline-job1>C:\Users\viinod\Desktop\apache-maven-3.5.0\bin\mvn -f pom.xml clean install 
+//POM file pom.xml specified the -f/--file command-line argument does not exist 
