@@ -1,0 +1,21 @@
+node ('master'){
+    ws('C:\\Users\\Nandini\\Jenkins') {
+    if (SetEnv in ('BUILD'))
+    {
+    stage ('scm_checkout')
+    
+checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/s3s-tech/devops']]])
+//def $MAVEN_HOME=tool 'MAVEN'
+/*bat 'mvn -f sample-java/pom.xml clean install'
+*/
+stage ('scm_build')
+bat 'C:\\Users\\Nandini\\apache-maven-3.5.0-bin\\apache-maven-3.5.0\\bin\\mvn -f sample-java\\pom.xml clean install'
+stage ('archive_build')
+archiveArtifacts '**\\target\\*.war'
+}
+if (SetEnv in ('DEV'))
+{
+    echo "deploying to dev env"
+}
+}
+}
