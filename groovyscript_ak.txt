@@ -1,7 +1,6 @@
  node ('master') {
-	//ws('C:\\Users\\K-R\\Jenkins') {
-	if (setenv  in ('build'))
-	{
+
+	if (setenv  in ('build')) {
 		stage ('scm_checkout')
 
 		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [],
@@ -11,12 +10,14 @@
 		bat 'C:\\softwares\\apache-maven-3.3.9\\bin\\mvn -f sample-java\\pom.xml clean install'
 		stage ('archive_build')
 		archiveArtifacts '**/target/*.war'
+		echo "deploying to build env"
 	}
 	if (setenv in ('dev')) {
 		stage ('dev')
 		echo "deploying to dev env"
 	}
-	if (setenv in ('build')) {
-		echo 'some message'
+	if (setenv in ('qa')) {
+		echo 'deploying in qa env'
 	}
 }
+
