@@ -1,24 +1,22 @@
-node ('master')
-{
-    //ws('C:\\Users\\K-R\\Jenkins') {
-    if (setenv  in ('build'))
-    {
-    stage ('scm_checkout')
-    
-checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], 
-submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/s3s-tech/devops']]])
-    //def MAVEN_HOME= tool 'MAVEN'
-    stage ('scm_build')
-bat 'C:\\softwares\\apache-maven-3.3.9\\bin\\mvn -f sample-java\\pom.xml clean install'
-stage ('archive_build')
-archiveArtifacts '**/target/*.war'
-}
-if (setenv in ('dev')) {
-    stage ('dev')
-    echo "deploying to dev env"
-}
-if (setenv in ('build')) { 
-    echo 'some message'
-}
-}
+ node ('master') {
+	//ws('C:\\Users\\K-R\\Jenkins') {
+	if (setenv  in ('build'))
+	{
+		stage ('scm_checkout')
+
+		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [],
+			submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/s3s-tech/devops']]])
+		//def MAVEN_HOME= tool 'MAVEN'
+		stage ('scm_build')
+		bat 'C:\\softwares\\apache-maven-3.3.9\\bin\\mvn -f sample-java\\pom.xml clean install'
+		stage ('archive_build')
+		archiveArtifacts '**/target/*.war'
+	}
+	if (setenv in ('dev')) {
+		stage ('dev')
+		echo "deploying to dev env"
+	}
+	if (setenv in ('build')) {
+		echo 'some message'
+	}
 }
