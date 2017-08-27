@@ -48,8 +48,6 @@
         <name>Anup-snapshots</name>
         <url>http://localhost:8081/artifactory/libs-snapshot</url>
     	</snapshotRepository>
-	</distributionManagement>
-	<distributionManagement>
     <repository>
         <id>central</id>
         <name>Anup-releases</name>
