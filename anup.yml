@@ -1,0 +1,47 @@
+---
+- hosts: [centos-anup]
+  remote_user: anup ansible_sudo_pass: password
+  tasks:
+    - name: Installing maven in server
+      yum: pkg=maven state=installed 
+      become: yes
+      become_method: sudo
+
+    - name: Install wget in the server
+      yum: pkg=wget state=latest
+      become: yes
+      become_method: sudo
+
+- hosts: [ubuntu-anup]
+  remote_user: anup
+  tasks:
+
+    - name: install updates
+      yum: name=* state=latest update_cache=yes
+      become: yes
+      become_method: sudo
+
+    - name: Installing maven in server
+      yum: pkg=maven state=installed 
+      become: yes
+      become_method: sudo
+
+    - name: Install wget in the server
+      yum: pkg=wget state=latest
+      become: yes
+      become_method: sudo
+
+    - name: Install wget in the server
+      yum: pkg=java state=latest
+      become: yes
+      become_method: sudo
+
+    - name: Install wget in the server
+      yum: pkg=git state=latest
+      become: yes
+      become_method: sudo
+
+    - name: Install wget in the server
+      yum: pkg=bind-utils state=latest
+      become: yes
+      become_method: sudo
