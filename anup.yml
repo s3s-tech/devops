@@ -1,6 +1,6 @@
 ---
 - hosts: [centos-anup]
-  remote_user: anup ansible_sudo_pass: password
+  remote_user: anup
   tasks:
     - name: Installing maven in server
       yum: pkg=maven state=installed 
@@ -45,3 +45,6 @@
       yum: pkg=bind-utils state=latest
       become: yes
       become_method: sudo
+
+   roles:
+     - jboss
