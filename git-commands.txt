@@ -1,0 +1,21 @@
+1060  sudo rm -rf .git
+ 1061  ls -lrta
+ 1062  ll
+ 1063  cd devops/
+ 1064  ll
+ 1065  touch git1.txt
+ 1066  git init
+ 1067  ll
+ 1068  git status
+ 1069  git add git1.txt
+ 1070  git commit "added git1.txt"
+ 1071  git commit -m "added git1.txt"
+ 1072  ll
+ 1073  git remote add origin https://github.com/s3s-tech/devops
+ 1074  ls -lrta
+ 1075  git remote add origin https://github.com/s3s-tech/devops
+ 1076  git remote -v
+ 1077  git push
+ 1078  git pull
+ 1079  git push
+ 1080  history
